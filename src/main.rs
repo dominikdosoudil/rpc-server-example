@@ -1,13 +1,7 @@
-
 use std::env;
 
-fn client() {
-	println!("clienting");
-}
-
-fn server() {
-	println!("starting server");
-}
+mod server;
+mod client;
 
 fn help() {
 	println!("Usage:\nmain (server|client)");
@@ -19,8 +13,8 @@ fn main() {
 	match args.len() {
 		2 => {
 			match &args[1][..] {
-				"server" => server(),
-				"client" => client(),
+				"server" => server::run(),
+				"client" => client::request(),
 				_ => help(),
 			}
 		},
